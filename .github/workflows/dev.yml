@@ -2,15 +2,15 @@ name: Dev
 
 on:
   push:
-    branches: [master]
-   pull_request:
-    branches: [master]
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   AZURE_WEBAPP_NAME: movie-app-dev
   AZURE_WEBAPP_PACKAGE_PATH: '.' 
   
- jobs:
+jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
@@ -26,8 +26,8 @@ env:
       run: dotnet build --configuration Release --no--restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    -name: 'Deploy to Azure WebApp'
-      uses: actions/webapps-deploy@v2
+    - name: 'Deploy to Azure WebApp'
+    - uses: actions/webapps-deploy@v2
       with:
         app-name: ${{env.AZURE_WEBAPP_NAME}}
         publish-profile: ${{}}
